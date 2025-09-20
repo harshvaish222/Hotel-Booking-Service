@@ -1,28 +1,52 @@
 import React from 'react'
 import { motion } from "motion/react"
-import { assets, homePageData } from '../assets/assets'
+import { assets, cities, homePageData } from '../assets/assets'
 
 const Hero = () => {
     return (
-        <>
-            <main className='flex flex-col md:flex-row items-center max-md:text-center justify-between mt-16 pb-6 sm:px-24 max-w-7xl mx-auto w-full'>
+        <div className="relative bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 
+                        min-h-[80vh] flex flex-col justify-center items-center px-6 overflow-hidden">
+
+            {/* Pattern Overlay */}
+            <div className="absolute inset-0 bg-[url('https://www.toptal.com/designers/subtlepatterns/patterns/dots.png')] 
+                            opacity-20 pointer-events-none"></div>
+
+            {/* Hero Content */}
+            <main className='relative z-10 flex flex-col md:flex-row items-center 
+                             max-md:text-center justify-between w-full max-w-7xl mx-auto'>
 
                 {/* Left side content */}
                 <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ duration: 2 }}
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 1.5 }}
                     className="flex flex-col items-center md:items-start"
                 >
                     {/* Heading */}
-                    <h1 className='text-heading font-bold text-3xl sm:text-4xl md:text-5xl max-w-2xl leading-tight'>
-                        Forget Busy Work, <br /> Start Next Vacation
+                    <h1 className='bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 
+                                   bg-clip-text text-transparent font-bold 
+                                   text-3xl sm:text-4xl md:text-5xl max-w-2xl leading-tight text-center md:text-left'>
+                        Forget Busy Work, <br /> Start Your Next Vacation
                     </h1>
 
-                    {/* Paragraph */}
-                    <p className='text-paragraph mt-4 max-w-md text-sm sm:text-base leading-relaxed'>
-                        We provide what you need to enjoy your holiday with family. Time to make another memorable moments.
-                    </p>
+                    {/* Paragraph with animated highlight */}
+                    <motion.p
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 1.2, delay: 0.5 }}
+                        className='mt-4 max-w-md text-sm sm:text-base leading-relaxed 
+                                   text-gray-600 text-center md:text-left'
+                    >
+                        We provide everything you need to enjoy your holiday with family.{" "}
+                        <motion.span
+                            animate={{ backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"] }}
+                            transition={{ duration: 6, repeat: Infinity, ease: "linear" }}
+                            className="bg-gradient-to-r from-pink-500 via-purple-600 to-blue-500 
+                                       bg-[length:200%_200%] bg-clip-text text-transparent font-semibold"
+                        >
+                            Time to create another memorable moment.
+                        </motion.span>
+                    </motion.p>
 
                     {/* Gradient Glow Button */}
                     <div className='flex flex-col md:flex-row items-center mt-8 gap-3'>
@@ -74,22 +98,34 @@ const Hero = () => {
                 </motion.div>
             </main>
 
-            {/* Form to Search a Hotel */}
-            <form className='max-w-4xl w-full mx-auto bg-[#EAF1FF] text-gray-800 rounded-2xl px-6 py-4 flex flex-col md:flex-row max-md:items-start gap-4 max-md:mx-auto'>
+            {/* Search Form */}
+            <form className='relative z-10 max-w-4xl w-full mx-auto bg-white/80 backdrop-blur-md 
+                              text-gray-800 rounded-2xl px-6 py-4 flex flex-col md:flex-row 
+                              max-md:items-start gap-4 mt-10 shadow-lg border border-gray-200'>
 
                 <div>
                     <div className='flex items-center gap-2'>
                         <img src={assets.calendar_icon} alt='' className='w-4 h-4' />
-                        <label htmlFor="destinationInput">Destination</label>
+                        <label htmlFor="destinationInput">Select Location </label>
                     </div>
-                    <input list='destinations' id="destinationInput" type="text" className="rounded border border-gray-200 px-3 py-1.5 mt-1.5 text-sm outline-none" placeholder="Type here" required />
+                    <input
+                        list='destinations'
+                        id="destinationInput"
+                        type="text"
+                        className="rounded border border-gray-200 px-3 py-1.5 mt-1.5 text-sm outline-none w-full"
+                        placeholder="Type here"
+                        required
+                    />
+                    <datalist id='destinations'>
+                        {cities.map((city, index) => (
+                            <option key={index} value={city} />
+                        ))}
+                    </datalist>
                 </div>
 
                 <div>
                     <div className='flex items-center gap-2'>
-                        <svg className="w-4 h-4 text-gray-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" >
-                            <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 10h16M8 14h8m-4-7V4M7 7V4m10 3V4M5 20h14a1 1 0 0 0 1-1V7a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1Z" />
-                        </svg>
+                        <img src={assets.calendar_icon} alt='' className='w-4 h-4' />
                         <label htmlFor="checkIn">Check in</label>
                     </div>
                     <input id="checkIn" type="date" className="rounded border border-gray-200 px-3 py-1.5 mt-1.5 text-sm outline-none" />
@@ -97,28 +133,39 @@ const Hero = () => {
 
                 <div>
                     <div className='flex items-center gap-2'>
-                        <svg className="w-4 h-4 text-gray-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" >
-                            <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 10h16M8 14h8m-4-7V4M7 7V4m10 3V4M5 20h14a1 1 0 0 0 1-1V7a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1Z" />
-                        </svg>
+                        <img src={assets.calendar_icon} alt='' className='w-4 h-4' />
                         <label htmlFor="checkOut">Check out</label>
                     </div>
-                    <input id="checkOut" type="date" className="rounded border border-gray-200 px-3 py-1.5 mt-1.5 text-sm outline-none" />
+                    <input
+                        id="checkOut"
+                        type="date"
+                        className="rounded border border-gray-200 px-3 py-1.5 mt-1.5 text-sm outline-none"
+                    />
                 </div>
 
                 <div className='flex md:flex-col max-md:gap-2 max-md:items-center'>
-                    <label htmlFor="guests">Guests</label>
-                    <input min={1} max={4} id="guests" type="number" className="rounded border border-gray-200 px-3 py-1.5 mt-1.5 text-sm outline-none max-w-16" placeholder="0" />
+                    <label htmlFor="guests">People</label>
+                    <input
+                        min={1}
+                        max={4}
+                        id="guests"
+                        type="number"
+                        className="rounded border border-gray-200 px-3 py-1.5 mt-1.5 text-sm outline-none max-w-16"
+                        placeholder="0"
+                    />
                 </div>
 
-                <button className='flex items-center justify-center gap-1 rounded-md bg-black py-3 px-4 text-white my-auto cursor-pointer max-md:w-full max-md:py-1' >
-                    <svg className="w-4 h-4 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" >
-                        <path stroke="currentColor" strokeLinecap="round" strokeWidth="2" d="m21 21-3.5-3.5M17 10a7 7 0 1 1-14 0 7 7 0 0 1 14 0Z" />
-                    </svg>
+                {/* Left aligned Search Button */}
+                <button 
+                    className='mt-6 md:mt-8 flex items-center justify-center gap-1 
+                               rounded-md bg-gradient-to-r from-blue-500 to-purple-600 
+                               py-3 px-6 text-white cursor-pointer shadow-md 
+                               hover:shadow-blue-400/50 max-md:w-full'>
                     <span>Search</span>
                 </button>
             </form>
-        </>
-    );
-};
+        </div>
+    )
+}
 
 export default Hero

@@ -34,9 +34,7 @@ const Footer = () => {
                     </div>
                 </div>
             </div>
-            <p className="pt-4 text-center text-xs md:text-sm pb-5">
-                Copyright 2024 © <a href="https://prebuiltui.com">PrebuiltUI</a>. All Right Reserved.
-            </p>
+            
         </footer>
     );
 };

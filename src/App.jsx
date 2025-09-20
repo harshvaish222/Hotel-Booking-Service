@@ -1,9 +1,10 @@
 import React from 'react';
 import { Routes, Route, useLocation } from "react-router-dom";
-import { Toaster } from 'react-hot-toast'; // ✅ Add this line
+import { Toaster } from 'react-hot-toast';
 
 import Home from './pages/Home';
-import Hotel from './pages/Hotels';
+import Hotels from './pages/Hotels';   // ✅ use Hotels (plural) file
+import HotelDetails from './pages/HotelDetails'; // ✅ new hotel detail page
 import Rooms from './pages/Rooms';
 import SingleRoom from "./pages/SingleRoom";
 import Signup from './pages/Signup';
@@ -23,7 +24,8 @@ const App = () => {
 
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/hotels" element={<Hotel />} />
+        <Route path="/hotels" element={<Hotels />} />
+        <Route path="/hotels/:id" element={<HotelDetails />} /> {/* ✅ Added */}
         <Route path="/rooms" element={<Rooms />} />
         <Route path="/rooms/:id" element={<SingleRoom />} />
         <Route path="/signup" element={<Signup />} />
