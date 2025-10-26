@@ -1,6 +1,6 @@
 # Hotel Booking System
 
-A modern hotel booking management system built with [technologies to be added].
+A modern hotel booking management system.
 
 ## Snapshots
 
