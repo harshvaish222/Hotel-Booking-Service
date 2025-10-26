@@ -1,4 +1,4 @@
-const roomData = [
+const RoomData = [
   {
     name: "Deluxe King Room",
     location: "Mumbai",
@@ -141,4 +141,4 @@ const roomData = [
   },
 ];
 
-export default roomData;
+export default RoomData;

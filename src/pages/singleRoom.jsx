@@ -1,9 +1,9 @@
 import React from 'react'
 
-const singleRoom = () => {
+const SingleRoom = () => {
   return (
     <div>singleRoom</div>
   )
 }
 
-export default singleRoom
+export default SingleRoom

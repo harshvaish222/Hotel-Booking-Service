@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import roomData from "../data/roomData";
+import RoomData from "../data/RoomData";
 
 const Rooms = () => {
   const [search, setSearch] = useState("");
@@ -8,7 +8,7 @@ const Rooms = () => {
   const [sort, setSort] = useState("");
 
   // Filtering
-  let filteredRooms = roomData.filter((room) => {
+  let filteredRooms = RoomData.filter((room) => {
     const matchesSearch =
       room.name.toLowerCase().includes(search.toLowerCase()) ||
       room.location.toLowerCase().includes(search.toLowerCase());
