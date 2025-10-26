@@ -18,7 +18,7 @@ A modern hotel booking management system built with [technologies to be added].
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/Hotel-Booking.git
+git clone https://github.com/harshvaish222/Hotel-Booking-Service.git
 
 # Install dependencies
 npm install
@@ -45,8 +45,3 @@ npm install
 ## License
 
 This project is licensed under the MIT License - see the LICENSE.md file for details
-
-## Contact
-
-Your Name - [@yourtwitter](https://twitter.com/yourtwitter)
-Project Link: [https://github.com/yourusername/Hotel-Booking](https://github.com/yourusername/Hotel-Booking)
