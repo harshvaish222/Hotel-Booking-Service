@@ -62,7 +62,7 @@ const PopularRooms = () => {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.15 }}
-                  className="min-w-[280px] bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 cursor-pointer"
+                  className="min-w-[280px] bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 cursor-pointer "
                 >
                   {/* Room Image Carousel */}
                   <div className="relative overflow-hidden rounded-t-2xl">
@@ -87,16 +87,16 @@ const PopularRooms = () => {
                   </div>
 
                   {/* Room Info */}
-                  <div className="p-5 flex flex-col">
+                  <div className="p-5 flex flex-col flex-grow">
                     <h3 className="text-lg font-semibold text-gray-800">{room.roomType}</h3>
                     <p className="text-gray-500 mt-2 text-sm line-clamp-3">{room.description}</p>
 
                     {/* Amenities */}
-                    <div className="flex flex-wrap gap-2 mt-3">
+                    <div className="flex flex-wrap gap-2 mt-3 flex-grow ">
                       {room.amenities.slice(0, 3).map((amenity, i) => (
                         <span
                           key={i}
-                          className="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded-full"
+                          className="px-3.5 py-1 bg-gray-100 text-gray-600 text-xs rounded-full"
                         >
                           {amenity}
                         </span>
@@ -104,7 +104,7 @@ const PopularRooms = () => {
                     </div>
 
                     {/* Price */}
-                    <p className="mt-4 text-purple-600 font-bold text-lg">₹{room.pricePerNight} / night</p>
+                    <p className="mt-4 text-purple-600 font-bold text-lg">${room.pricePerNight} / night</p>
 
                     {/* Book Now Button */}
                     <motion.button
